@@ -60,8 +60,7 @@ containers=$(az storage container list --account-name $storage_account_name --qu
 
 # if we could not get back containers, exit
 if [ -z "$containers" ]; then
-    info_log "No containers retreived from storage account $storage_account_name. Exiting."
-    exit 1
+    exit_with_error "No containers retreived from storage account $storage_account_name. Exiting."    
 fi
 
 # for each container, download all its blobs to the destination directory
